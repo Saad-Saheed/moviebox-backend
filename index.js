@@ -13,7 +13,21 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const HOST = 'localhost';
 
-app.use(cors());
+const allowedOrigins = [
+    'http://localhost:5173',                      // Local dev
+    'https://moviebox-frontend-two.vercel.app',   // Your Vercel frontend
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
+        return callback(new Error('Not allowed by CORS'));
+    },
+    credentials: true, // Optional if you're using cookies
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.get('/', (req, res) => {
@@ -33,5 +47,5 @@ app.use(errorHandler);
 
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://${HOST}:${PORT}`);
+    console.log(`Server is running on http://${HOST}:${PORT}`);
 });
