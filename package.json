@@ -1,0 +1,36 @@
+{
+  "name": "moviebox",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "movie recommendation API",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx prisma generate; node ./index.js",
+    "dev": "npx prisma generate && nodemon ./index.js",
+    "studio": "npx prisma studio"
+  },
+  "keywords": [
+    "API",
+    "movie",
+    "recommendation",
+    "favorites",
+    "watchlist",
+    "authentication"
+  ],
+  "author": "saad saheed",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^6.9.0",
+    "axios": "^1.9.0",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "validatorjs": "^3.22.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10",
+    "prisma": "^6.9.0"
+  }
+}
